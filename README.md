@@ -13,7 +13,7 @@ Hyperdimensional Computing implementation with MNIST dataset.
  - This application runs udner Python 3. Please have the newest python version installed.
  - This application requires the following packages: pickle, pandas, numpy, scikit-learn and python-mnist. Packages can be installed via:
  
-     pip install pickle pandas numpy scikit-learn python-mnist
+    pip install pickle pandas numpy scikit-learn python-mnist
      
 
 ### Run the application.
