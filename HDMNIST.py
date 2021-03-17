@@ -16,13 +16,14 @@ classes = 10
 train_size = 3000
 test_size = 2000
 
-
+# Loading the dataset and split into train and test set.
 def load_dataset(mnist_path):
     mndata = MNIST(mnist_path)
     X_train, Y_train = map(np.array, mndata.load_training())
     X_test, Y_test = map(np.array, mndata.load_testing())
     return X_train, Y_train, X_test, Y_test
 
+# Generate item memories (both position and value)
 def PositionHV(imgsize, valrange):
     posHV = np.random.randint(2, size=(imgsize * imgsize, dim))
     valHV = np.random.randint(2, size=(valrange, dim))
@@ -40,19 +41,23 @@ imgidx = 0
 for img in x_tr:
     imgHV = np.zeros(dim)
     pixidx = 0
+    # Encode each img into representative HV
     for pix in img:
         pixHV = np.multiply(posHV[pixidx], valHV[pix])
         imgHV = np.add(imgHV, pixHV)
         pixidx += 1
+    # Bipolarize HV
     imgHV[imgHV >= 0] = 1
     imgHV[imgHV < 0] = -1
+    # Update AM
     RefMemory[y_tr[imgidx]] = np.add(RefMemory[y_tr[imgidx]], imgHV)
     imgidx += 1
     if imgidx == train_size:
         RefMemory[RefMemory > 0] = 1
         RefMemory[RefMemory <= 0] = -1
         break
-
+        
+# Testing
 imgidx = 0
 y_pred = []
 for img in x_te:
