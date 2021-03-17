@@ -14,7 +14,7 @@ Hyperdimensional Computing implementation with MNIST dataset.
  - This application requires the following packages: pickle, pandas, numpy, scikit-learnand python-mnist. Packages can be installed via pip.
 
 ### Run the application.
- - Application can be run by directly executing the python script, e.g. "python3 HDMNIST.py"
+ - Application can be run by directly executing the python script, e.g. "python3 HDMNIST.py". Give mode argument to main() to select which mode this script operates on. Please note that you must run in "train" mode to train your AM before running in "test" mode.
  - You can adjust different parameters of HDC, including: Dimension, epochs of retraining, training and testing set sizes and quantization bits.
  - Random train/test split is not implemented yet. You need to implement by yourself.
  - This script will generate files of considerable size in the directory, make sure you have proper access and disk space.
