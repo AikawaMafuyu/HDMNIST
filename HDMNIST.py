@@ -105,7 +105,7 @@ def loadmodel(fpath):
     return am, position_table, grayscale_table
 
 
-# Quantize AM into different bitlength.
+# Quantize AM into different bitlength using the naive method.
 def quantize(am, before_bw, after_bw):
     am_ = am.copy()
     if before_bw > after_bw:
@@ -119,15 +119,15 @@ def main(mode):
     global QBIT
     #mode can be: train / test / retrain (to-be-implemented)
     mnist_path = './mnist/'
-    dim = [10000, 5000, 2000, 1000]
-    maxval = 256
-    imgsize = 28
-    n_class = 10
-    retraining_epoch = 3
-    train_size = 1500
-    test_size = 300
-    datatype = 'bipolar'
-    q_bit = [16, 12, 8]
+    dim = [10000, 5000, 2000, 1000] #Dimensions of HV
+    maxval = 256 # Grayscale value range
+    imgsize = 28 # Size of MNIST image
+    n_class = 10 # Number of classes inside MNIST dataset.
+    retraining_epoch = 3 # Number of retraining epochs
+    train_size = 1500 # Size of training data.
+    test_size = 300 # Size of testing data
+    datatype = 'bipolar' # HV type inside item HVs, currently only support bipolar.
+    q_bit = [16, 12, 8] # Quantization bits
 
     X_train, Y_train, X_test, Y_test = load_dataset(mnist_path)
     X_train = X_train[0:train_size]
