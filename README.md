@@ -16,5 +16,5 @@ Hyperdimensional Computing implementation with MNIST dataset.
 ### Run the application.
  - Application can be run by directly executing the python script, e.g. "python3 HDMNIST.py"
  - You can adjust different parameters of HDC, including: Dimension, epochs of retraining, training and testing set sizes and quantization bits.
- - Random train/test split is not implemented yet. You need to implement by yourself
- - This script will generate files in the directory, make sure you have proper access and disk space.
+ - Random train/test split is not implemented yet. You need to implement by yourself.
+ - This script will generate files of considerable size in the directory, make sure you have proper access and disk space.
